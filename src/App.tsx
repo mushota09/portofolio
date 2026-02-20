@@ -19,6 +19,10 @@ import {
   Download
 } from 'lucide-react';
 
+// Image de profil (Chemin local avec secours pour l'aperçu)
+const PROFILE_IMAGE = "/mushota.png";
+const FALLBACK_IMAGE = "https://drive.google.com/uc?export=download&id=11b0ktr8i4tsXWsqVOyYfMGGCg7jIJJHu";
+
 const Navbar = () => (
   <nav className="fixed top-0 left-0 w-full z-50 bg-bg-darker/80 backdrop-blur-md border-b border-white/5">
     <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
@@ -97,9 +101,10 @@ const Hero = () => (
         <div className="absolute inset-0 bg-accent hexagon-clip opacity-20 blur-2xl animate-pulse"></div>
         <div className="absolute inset-0 border-4 border-accent hexagon-clip glow-cyan z-10"></div>
         <img 
-          src="https://drive.google.com/file/d/11b0ktr8i4tsXWsqVOyYfMGGCg7jIJJHu/view?usp=drive_link" 
+          src={PROFILE_IMAGE} 
           alt="Mushota Raphael"
-          className="w-full h-full object-cover hexagon-clip relative z-0 grayscale hover:grayscale-0 transition-all duration-500"
+          onError={(e) => { e.currentTarget.src = FALLBACK_IMAGE; }}
+          className="w-full h-full object-cover hexagon-clip relative z-0 hover:scale-105 transition-all duration-500 brightness-110 contrast-110 saturate-110"
           referrerPolicy="no-referrer"
         />
       </div>
@@ -119,9 +124,10 @@ const About = () => (
         <div className="relative w-64 h-72 md:w-80 md:h-96 mx-auto">
           <div className="absolute inset-0 border-4 border-accent hexagon-clip glow-cyan z-10"></div>
           <img 
-            src="https://picsum.photos/seed/about/800/1000" 
+            src={PROFILE_IMAGE} 
             alt="About Me"
-            className="w-full h-full object-cover hexagon-clip grayscale"
+            onError={(e) => { e.currentTarget.src = FALLBACK_IMAGE; }}
+            className="w-full h-full object-cover hexagon-clip brightness-110 contrast-110 saturate-110"
             referrerPolicy="no-referrer"
           />
         </div>
