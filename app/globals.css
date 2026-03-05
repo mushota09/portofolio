@@ -10,8 +10,15 @@
 }
 
 @layer base {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
   body {
     @apply bg-bg-darker text-white font-sans;
+    overflow-x: hidden;
   }
 }
 
